@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+}
+
+.map-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.QueryBox {
+    position: absolute;
+    top: 200px; 
+    left: 50px; 
+    width: 500px;
+    height: 850px;
+    background-color: #ffffffde;
+    border-radius: 15px;
+}

@@ -1,5 +1,6 @@
-import { GoogleMap, useLoadScript } from '@react-google-maps/api'
-
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
+import LocationMarker from './LocationMarker'
+import mapStyles from './mapStyles'
 
 
 const Map = ({center, zoom, disableDefaultUI}) => {
@@ -10,17 +11,27 @@ const Map = ({center, zoom, disableDefaultUI}) => {
 
     if(!isLoaded) return <div>Loading...</div>
 
+    const options = {
+      styles: mapStyles,
+      disableDefaultUI: true,
+      zoomControl: true, 
+    }
+
     return (
-    <GoogleMap zoom={zoom} center={center} options={disableDefaultUI={disableDefaultUI}} mapContainerClassName="map-container"></GoogleMap>
+    <div className="map">
+      <GoogleMap zoom={zoom} center={center} options={options} mapContainerClassName="map-container">
+        <LocationMarker lat={center.lat} lng={center.lng} />
+      </GoogleMap>
+    </div>
   )
 }
 
 Map.defaultProps = {
   center : {
     lat: 37.749997,
-    lng: -122.2833322,
+    lng: -122.1833322,
   },
-  zoom : 12,
+  zoom : 14,
   disableDefaultUI: true,
 }
 
